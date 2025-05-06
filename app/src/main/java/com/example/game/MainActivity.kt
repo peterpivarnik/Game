@@ -49,7 +49,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun DrazdakGame(innerPadding: PaddingValues) {
-    val h1 = TextHolder("Lesnícka palica Gejzu Dražďáka", 26.sp)
+    val h1 = TextHolder("Lesnícka palica Gejzu Dražďáka", "Štart", 26.sp, true)
     val h2 = TextHolder(
             "Kde bolo, tam bolo, žil raz v petržalských lesoch jeden lesník. " +
                     "Tento lesník sa volal Gejza Dražďák a mal na starosti lesy na petržalskej strane Dunaja. " +
@@ -63,11 +63,10 @@ fun DrazdakGame(innerPadding: PaddingValues) {
         TextHolder("Raz sa stalo, že sa mu táto lesnícka palica stratila. Gejza netušil kde sa jeho lesnícka palica nachádza. " +
                            "Bez toho aby vedel kde je jeho kúzelná palica sa nemohol vybrať do lesa.")
 
-    val h6 = TextHolder("Chcel by si pomôcť Gejzovi nájsť stratenú lesnícku palicu?",
-                        16.sp,
-                        true)
+    val h6 = TextHolder("Chcel by si pomôcť Gejzovi nájsť stratenú lesnícku palicu?", "Áno", 16.sp, true)
+    val h7 = TextHolder("Poďme na to:")
 
-    val myTexts = listOf(h1, h2, h3, h4, h5, h6)
+    val myTexts = listOf(h1, h2, h3, h4, h5, h6, h7)
 
     MyApp(myTexts)
 }
@@ -80,19 +79,18 @@ private fun MyApp(myTexts: List<TextHolder>) {
             .paint(painterResource(id = R.drawable.forrester2), contentScale = ContentScale.Crop),
            verticalArrangement = Arrangement.Bottom,
            horizontalAlignment = Alignment.CenterHorizontally) {
-        TextField(
-                value = myTexts[index].displayText,
-                onValueChange = {},
-                modifier = Modifier.padding(vertical = 4.dp),
-                shape = RoundedCornerShape(8.dp),
-                enabled = true,
-                readOnly = true,
-                textStyle = TextStyle.Default.copy(fontSize = myTexts[index].fontSize),
-                colors = OutlinedTextFieldDefaults.colors(unfocusedContainerColor = Color(0xffd8e6ff),
-                                                          focusedContainerColor = Color(0xffd8e6ff)))
+        TextField(value = myTexts[index].displayText,
+                  onValueChange = {},
+                  modifier = Modifier.padding(vertical = 4.dp),
+                  shape = RoundedCornerShape(8.dp),
+                  enabled = true,
+                  readOnly = true,
+                  textStyle = TextStyle.Default.copy(fontSize = myTexts[index].fontSize),
+                  colors = OutlinedTextFieldDefaults.colors(unfocusedContainerColor = Color(0xffd8e6ff),
+                                                            focusedContainerColor = Color(0xffd8e6ff)))
         if (myTexts[index].oneButton) {
-            Button(enabled = index > 0, onClick = { index++ }) {
-                Text(text = "Áno")
+            Button(onClick = { index++ }) {
+                Text(text = myTexts[index].firstButtonText)
             }
         }
         else {
