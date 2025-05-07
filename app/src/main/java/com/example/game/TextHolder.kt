@@ -6,4 +6,5 @@ import androidx.compose.ui.unit.sp
 data class TextHolder(val displayText: String,
                       val firstButtonText: String = "Späť",
                       val fontSize: TextUnit = 16.sp,
-                      val oneButton: Boolean = false)
+                      val oneButton: Boolean = false,
+                      val input: Boolean = false)
