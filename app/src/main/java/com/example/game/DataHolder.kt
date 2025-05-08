@@ -6,5 +6,7 @@ import com.example.game.ComponentType.TWO_BUTTONS
 
 data class DataHolder(val displayText: String,
                       val firstButtonText: String = "Späť",
+                      val secondButtonText: String = "Pokračovať",
                       val fontSize: TextUnit = 16.sp,
-                      val componentType: ComponentType = TWO_BUTTONS)
+                      val componentType: ComponentType = TWO_BUTTONS,
+                      val answers: List<Answer> = emptyList())
