@@ -24,6 +24,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -60,41 +61,49 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DrazdakGame(innerPadding: PaddingValues) {
     val h1 = DataHolder("Lesnícka palica Gejzu Dražďáka", "Štart", fontSize = 26.sp, componentType = ONE_BUTTON)
-    val h2 = DataHolder("Kde bolo, tam bolo, žil raz v petržalských lesoch jeden lesník. " +
-                        "Tento lesník sa volal Gejza Dražďák a mal na starosti lesy na petržalskej strane Dunaja. " +
-                        "Pomocou svojej lesníckej palice dokázal udržiavať poriadok v lese. ")
-    val h3 = DataHolder("Táto palica bola totiž kúzelná. Pomáhala mu rozprávať sa so zvieratami a tak hneď vedel, " +
-                        "či je v lese všetko v poriadku.")
-    val h4 = DataHolder("Táto lesnícka palica mu dokonca dala moc rozumieť zvieratám aj keď ju práve nemal pri sebe." +
-                        " Stačilo, že ju ráno chytil do ruky a hneď rozumel všetkým zvieratkám celý deň.")
-    val h5 = DataHolder("Raz sa stalo, že sa mu táto lesnícka palica stratila. " +
-                        "Gejza netušil kde sa jeho lesnícka palica nachádza. " +
-                        "Bez toho aby vedel kde je jeho kúzelná palica sa nemohol vybrať do lesa.")
-    val h6 = DataHolder("Chcel by si pomôcť Gejzovi nájsť stratenú lesnícku palicu?",
-                        "Áno",
-                        componentType = ONE_BUTTON)
+    val h2 = DataHolder(
+        "Kde bolo, tam bolo, žil raz v petržalských lesoch jeden lesník. " +
+        "Tento lesník sa volal Gejza Dražďák a mal na starosti lesy na petržalskej strane Dunaja. " +
+        "Pomocou svojej lesníckej palice dokázal udržiavať poriadok v lese. ")
+    val h3 = DataHolder(
+        "Táto palica bola totiž kúzelná. Pomáhala mu rozprávať sa so zvieratami a tak hneď vedel, " +
+        "či je v lese všetko v poriadku.")
+    val h4 = DataHolder(
+        "Táto lesnícka palica mu dokonca dala moc rozumieť zvieratám aj keď ju práve nemal pri sebe." +
+        " Stačilo, že ju ráno chytil do ruky a hneď rozumel všetkým zvieratkám celý deň.")
+    val h5 = DataHolder(
+        "Raz sa stalo, že sa mu táto lesnícka palica stratila. " +
+        "Gejza netušil kde sa jeho lesnícka palica nachádza. " +
+        "Bez toho aby vedel kde je jeho kúzelná palica sa nemohol vybrať do lesa.")
+    val h6 = DataHolder(
+        "Chcel by si pomôcť Gejzovi nájsť stratenú lesnícku palicu?",
+        "Áno",
+        componentType = ONE_BUTTON)
     val h7 = DataHolder("Poďme na to:")
     val h8 = DataHolder("Ako prvu vec potrebujem aby si zistil kedy bol postaveny tento dom. Bolo to:",
                         componentType = QUESTION,
-                        answers = listOf(Answer("1981", false),
-                                         Answer("1982", false),
-                                         Answer("1983", true),
-                                         Answer("1984", false)))
+                        answers = listOf(
+                            Answer("1981", false),
+                            Answer("1982", false),
+                            Answer("1983", true),
+                            Answer("1984", false)))
     val h9 = DataHolder("Správne! Teraz musíš ísť za ježkom možno ti poradí ako ďalej")
-    val h10 = DataHolder("Ahoj pomocník Ja som ježko a bývam tu na tejto lúke. Pomáhaš nájsť lesnícku palicu?",
-                         "Áno",
-                         componentType = ONE_BUTTON)
+    val h10 = DataHolder(
+        "Ahoj pomocník Ja som ježko a bývam tu na tejto lúke. Pomáhaš nájsť lesnícku palicu?",
+        "Áno",
+        componentType = ONE_BUTTON)
     val h11 = DataHolder("Tak poď za mnou. Dúfam že mi budeš stíhať, ja som totiž celkom rýchly.")
     val h12 = DataHolder("Povedz mi kde bol vyrobený tento maličký most, lebo sa mi veľmi páči",
                          componentType = QUESTION,
-                         answers = listOf(Answer("Podbrezová", false),
-                                          Answer("Hronec", true),
-                                          Answer("Košice", false),
-                                          Answer("Bratislava", false)))
-    val h13 = DataHolder("Ďakujem za informáciu. Bohužiaľ ja neviem kde je lesníková palica. Skús sa spýtať vlka. " +
+                         answers = listOf(
+                             Answer("Podbrezová", false),
+                             Answer("Hronec", true),
+                             Answer("Košice", false),
+                             Answer("Bratislava", false)))
+    val h13 = DataHolder("Ďakujem za informáciu. " +
+                         "Bohužiaľ ja neviem kde je lesníková palica. Skús sa spýtať vlka. " +
                          "Je tu neďaleko za týmto jazerom.")
     val myTexts = listOf(h1, h2, h3, h4, h5, h6, h7, h8, h9, h10, h11, h12, h13)
-
     MyApp(myTexts)
 }
 
@@ -148,8 +157,7 @@ private fun TwoButtons(backButtonEnabled: Boolean,
             Text(text = backButtonText)
         }
         Spacer(modifier = Modifier.padding(25.dp))
-        Button(enabled = nextButtonEnabled,
-               onClick = nextButtonOnClick) {
+        Button(enabled = nextButtonEnabled, onClick = nextButtonOnClick) {
             Text(text = nextButtonText)
         }
     }
@@ -159,42 +167,45 @@ private fun TwoButtons(backButtonEnabled: Boolean,
 private fun QuestionWithAnswers(answers: List<Answer>, onCorrectChoice: () -> Unit) {
     val showAlertMessage = remember { mutableStateOf(false) }
     if (showAlertMessage.value) {
-        AlertDialog(
-                icon = {
-                    Icon(Icons.Default.Warning, contentDescription = "Example Icon")
-                },
-                title = {
-                    Text(text = "Zlá odpoveď")
-                },
-                text = {
-                    Text(text = "Skontroluj si poriadne svoju odpoveď")
-                },
-                onDismissRequest = {
-                    showAlertMessage.value = false
-                },
-                confirmButton = {
-                    TextButton(onClick = {
-                        showAlertMessage.value = false
-                    }) {
-                        Text("OK")
-                    }
-                }
-        )
+        MyAlertDialog(showAlertMessage)
     }
     answers.forEach { action ->
         Button(
-                onClick = {
-                    if (action.valid) {
-                        onCorrectChoice.invoke()
-                    }
-                    else {
-                        showAlertMessage.value = true
-                    }
-                },
-                modifier = Modifier.width(256.dp),
-                shape = RoundedCornerShape(8.dp),
-                enabled = true) {
+            onClick = {
+                if (action.valid) {
+                    onCorrectChoice.invoke()
+                }
+                else {
+                    showAlertMessage.value = true
+                }
+            },
+            modifier = Modifier.width(256.dp),
+            shape = RoundedCornerShape(8.dp),
+            enabled = true) {
             Text(text = action.answer)
         }
     }
+}
+
+@Composable
+private fun MyAlertDialog(showAlertMessage: MutableState<Boolean>) {
+    AlertDialog(
+        icon = {
+            Icon(Icons.Default.Warning,
+                 contentDescription = "Example Icon")
+        },
+        title = {
+            Text(text = "Zlá odpoveď")
+        },
+        text = {
+            Text(text = "Skontroluj si poriadne svoju odpoveď")
+        },
+        onDismissRequest = {
+            showAlertMessage.value = false
+        },
+        confirmButton = {
+            TextButton(onClick = { showAlertMessage.value = false })
+            { Text("OK") }
+        }
+    )
 }
