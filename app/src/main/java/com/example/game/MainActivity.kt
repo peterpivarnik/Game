@@ -101,9 +101,148 @@ fun DrazdakGame(innerPadding: PaddingValues) {
                              Answer("Košice", false),
                              Answer("Bratislava", false)))
     val h13 = DataHolder("Ďakujem za informáciu. " +
-                         "Bohužiaľ ja neviem kde je lesníková palica. Skús sa spýtať vlka. " +
-                         "Je tu neďaleko za týmto jazerom.")
-    val myTexts = listOf(h1, h2, h3, h4, h5, h6, h7, h8, h9, h10, h11, h12, h13)
+                         "Videl som, že niekto v kapucni beží tam na konci tejto lúky s lesníkovou palicou v ruke. " +
+                         "Tam neďaleko býva korytnačka, skú sa jej spýtať či niekoho nevidela.")
+    val h14 = DataHolder("Ahoj pomocník, vidím že pomáhaš nájsť lesnícku palicu. " +
+                         "Môžem ti pomôcť, ale najprv musíš dokázať že dobre poznáš zvieratká. ")
+    val h15 = DataHolder("Vieš medzi aké druhy zvierat patria korytnačky?",
+                         componentType = QUESTION,
+                         answers = listOf(
+                             Answer("Cicavce", false),
+                             Answer("Obojživejníky", true),
+                             Answer("Ryby", false),
+                             Answer("Vtáky", false)))
+    val h16 = DataHolder("Výborne, vidím že sa vyznáš. Takže ti pomôžem." +
+                         "Videla som niekoho v kapucni. Išiel tadiaľto po ceste. Tam kúsok dalej na poloostrove býva bobor. " +
+                         "Skús sa spýtať jeho",
+                         "Ďakujem",
+                         componentType = ONE_BUTTON)
+    val h17 = DataHolder("Čo tu chceš, nevidíš že nemám čas? " +
+                         "Jasné, jasné, hľadáš palicu, a prečo ti ja mám pomáhať? ")
+    val h18 = DataHolder("Vieš vôbec čo majú bobre najradšej?",
+                         componentType = QUESTION,
+                         answers = listOf(
+                             Answer("Listy zo stromov", false),
+                             Answer("Kôru zo stromov", true),
+                             Answer("Suchú trávu", false),
+                             Answer("Čerstvé mušky", false)))
+    val h19 = DataHolder("No tak dobre, pomôžem ti. " +
+                         "Videl som niekoho v kapucni utekať týmto smerom. Tam niekde býva vlk, skús sa spýtať jeho. ")
+    val h20 = DataHolder("Auuuuuuuu! " +
+                         "Čo tu robíš? Vari nevidíš že si na mojom území? " +
+                         "Ty sa ma nebojíš? Tak to musíš byť ty, čo hľadáš tú lesníkovu palicu? " +
+                         "Už o tebe vie hádam celý les. A tuším chceš pomoc aj odo mňa. " +
+                         "Videl som niekoho, kto mal v ruke tú palicu. " +
+                         "Ale ak chceš moju pomoc, musíš mi odpovedať na jednu otázku: ")
+    val h21 = DataHolder("V ktorej rozprávke nie je vlk v hlavnej úlohe?",
+                         componentType = QUESTION,
+                         answers = listOf(
+                             Answer("Sedem kozliatok", false),
+                             Answer("Tri prasiatka", false),
+                             Answer("Červená čiapočka", false),
+                             Answer("Šípková Ruženka", true)))
+    val h22 = DataHolder("Správne. Pozri, už je tu veverička. Tá ti ukáže kadiaľ išiel ten človek s palicou. ")
+    val h23 =
+            DataHolder("Áno, áno, ja ti to ukážem, ale najprv mi nusíš vysvetliť ako tu mohol vyrásť taký veľý strom. " +
+                       "Poď za mnou ukážem ti ho.")
+    val h24 = DataHolder("Ach veverička, veď to nie je strom, to je predsa:",
+                         componentType = QUESTION,
+                         answers = listOf(
+                             Answer("Veľký dom", false),
+                             Answer("Panelák", false),
+                             Answer("Krík", false),
+                             Answer("Stožiar", true)))
+    val h25 = DataHolder("A na tom stožiari sú antény na príjmanie a vysielanie signálu.")
+    val h26 = DataHolder("Antény? No teda. No keď vravíš. " +
+                         "No teraz musíš ísť tamto k vode. Skús sa spýtať labute, či ti nebude vedieť poradiť viac.")
+    val h27 = DataHolder("Ahoj labuť. Nevidela si tu niekoho s lesníkovou palicou?")
+    val h28 = DataHolder("Videla, ale ak chces pomôcť, tak najprv poraď ty mne.")
+    val h29 = DataHolder("Vieš ktorá rozprávka je o labuti?",
+                         componentType = QUESTION,
+                         answers = listOf(
+                             Answer("Škaredé mačiatko", false),
+                             Answer("Škaredé kuriatko", false),
+                             Answer("Škaredé húsatko", false),
+                             Answer("Škaredé káčatko", true)))
+    val h30 = DataHolder("No dobre, videla som aj ja niekoho ísť s lesníckou palicou, musíš ísť tamto kúsok ďalej. " +
+                         "Tam sa zvykne nad hladinu vynárať kapor, počkaj na neho, on určite niečo videl.")
+    val h31 = DataHolder("Počkaj na kapra? Ale dokedy tu mám čakať?")
+    val h32 = DataHolder("Hmm, niekto ma tu volá? Aha, hľadáš palicu, že? " +
+                         "Pomôžem ti ak vieš, ktorá časť kapra sa odkladá pre šťastie.")
+    val h33 = DataHolder("Je to:",
+                         componentType = QUESTION,
+                         answers = listOf(
+                             Answer("Kaprie oko", false),
+                             Answer("Kapria kosť", false),
+                             Answer("Kapria hlava", false),
+                             Answer("Kapria šupina", true)))
+    val h34 = DataHolder("No dobre, vidím že to poznáš, tak choď týmto smerom. " +
+                         "Tam pri lávke býva žaba, hádam ti aj ona pomôže.")
+    val h35 = DataHolder("Kváá. Kváá. Vidím ťa. A viem že hľadáš lesníkovú palicu. " +
+                         "Ale ak chceš vedieť kadiaľ ďalej, musíš vedieť ako sa volá táto časť Dunaja!")
+    val h36 = DataHolder("Je to:",
+                         componentType = QUESTION,
+                         answers = listOf(
+                             Answer("Slovenské rameno", false),
+                             Answer("Maďarské rameno", false),
+                             Answer("Poľské rameno", false),
+                             Answer("Chorvátske rameno", true)))
+    val h37 = DataHolder("Výborne! Kváá. " +
+                         "Teraz bež ešte tamto do lesa. Tam musíš nájsť strom v tvare písmena \"V\". " +
+                         "Na ňom býva stará múdra sova, ona už bude vedieť ako ti poradiť.")
+    val h38 = DataHolder("Hu húú, tak ty hľadáš palicu? Tak mám pre teba poslednú úlohu. " +
+                         "Povedz mi kam išla sova v obľúbenej detskej pesničke?",
+                         componentType = QUESTION,
+                         answers = listOf(
+                             Answer("do kina", false),
+                             Answer("do divadla", false),
+                             Answer("na tanec", true),
+                             Answer("na disco", false)))
+    val h39 = DataHolder("Super. Zvládol si všetky úlohy. Teraz už musíš len zistiť kde je lesníková palica. " +
+                         "Ale ani to pre teba nebude problém. Stačí ak nazrieš do Záhrady Gejzu Dražďáka.")
+    val h40 = DataHolder("V záhrade: Veď tá palica je tu. A má ju v rukách lesníkov syn. " +
+                         "Tak tá palica sa vôbec nestratila, ale lesníkov syn spravil všetku prácu za svojho otca! ")
+    val myTexts = listOf(h1,
+                         h2,
+                         h3,
+                         h4,
+                         h5,
+                         h6,
+                         h7,
+                         h8,
+                         h9,
+                         h10,
+                         h11,
+                         h12,
+                         h13,
+                         h14,
+                         h15,
+                         h16,
+                         h16,
+                         h17,
+                         h18,
+                         h19,
+                         h20,
+                         h21,
+                         h22,
+                         h23,
+                         h24,
+                         h25,
+                         h26,
+                         h27,
+                         h28,
+                         h29,
+                         h30,
+                         h31,
+                         h32,
+                         h33,
+                         h34,
+                         h35,
+                         h36,
+                         h37,
+                         h38,
+                         h39,
+                         h40)
     MyApp(myTexts)
 }
 
