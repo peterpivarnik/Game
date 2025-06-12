@@ -80,10 +80,10 @@ private fun MyApp(viewModel: GameDataViewModel) {
 
         when (viewModel.getCurrentDataHolder().componentType) {
             ONE_BUTTON -> OneButton({ viewModel.incrementIndex() }, viewModel.getCurrentDataHolder().firstButtonText)
-            TWO_BUTTONS -> TwoButtons(viewModel.index.value > 0,
+            TWO_BUTTONS -> TwoButtons(viewModel.getCurrentIndex() > 0,
                                       { viewModel.decrementIndex() },
                                       viewModel.getCurrentDataHolder().firstButtonText,
-                                      viewModel.index.value < viewModel.getHoldersListSize() - 1,
+                                      viewModel.getCurrentIndex() < viewModel.getHoldersListSize() - 1,
                                       { viewModel.incrementIndex() },
                                       viewModel.getCurrentDataHolder().secondButtonText)
             QUESTION -> QuestionWithAnswers(answers = viewModel.getCurrentDataHolder().answers,
